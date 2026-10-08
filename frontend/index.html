@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroSustain – AI-Powered SDG Smart Agriculture Platform</title>
+    <meta name="description" content="AI-powered agricultural recommendations for better productivity, efficient resource usage and sustainable farming supporting UN SDGs.">
+    <!-- FontAwesome & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="brand-logo" id="navBrandLogo">
+                <div class="logo-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                <span>Agro<span>Sustain</span></span>
+            </a>
+
+            <nav>
+                <ul class="nav-links" id="mainNavLinks">
+                    <li><a href="index.html" class="active" id="navHome">Home</a></li>
+                    <li><a href="#features" id="navFeatures">Features</a></li>
+                    <li><a href="#how-it-works" id="navHowItWorks">How It Works</a></li>
+                    <li><a href="#sdgs" id="navSdgs">SDGs</a></li>
+                    <li><a href="#about" id="navAbout">About</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-outline btn-sm" id="navLoginBtn">Login</a>
+                <a href="register.html" class="btn btn-primary btn-sm" id="navRegisterBtn">Register</a>
+                <button class="mobile-toggle" aria-label="Toggle navigation" id="mobileMenuToggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-earth-americas"></i> United Nations SDG Smart Agriculture Initiative
+                </div>
+                <h1 class="hero-title">
+                    Smart Farming for a <span class="gradient-text">Sustainable Future</span>
+                </h1>
+                <p class="hero-subtitle">
+                    AI-powered agricultural recommendations for better productivity, efficient resource usage and sustainable farming.
+                </p>
+                <div class="hero-cta">
+                    <a href="register.html" class="btn btn-primary btn-lg" id="heroGetStartedBtn">
+                        <i class="fa-solid fa-rocket"></i> Get Started
+                    </a>
+                    <a href="#features" class="btn btn-outline btn-lg" id="heroExploreBtn">
+                        <i class="fa-solid fa-compass"></i> Explore Features
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>94.5%</h3>
+                        <p>Crop AI Accuracy</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>40%+</h3>
+                        <p>Water Conserved</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>5 UN</h3>
+                        <p>SDGs Supported</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-floating-badge badge-top-right">
+                    <i class="fa-solid fa-droplet text-info fa-lg"></i>
+                    <div>
+                        <strong style="font-size: 0.85rem; display: block;">Smart Drip Active</strong>
+                        <span style="font-size: 0.75rem; color: #64748b;">Saved 8,400 L Water</span>
+                    </div>
+                </div>
+
+                <div class="hero-card-preview">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                        <span style="font-size: 0.85rem; color: #34d399; font-weight: 700; text-transform: uppercase;">
+                            <i class="fa-solid fa-microchip"></i> Live Agro AI Engine
+                        </span>
+                        <span class="status-pill pulse" style="background: rgba(16,185,129,0.2); color: #34d399;">Online</span>
+                    </div>
+
+                    <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem; color: white;">AI Crop & Resource Advisor</h3>
+                    <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 1.25rem;">
+                        Analyzing soil nitrogen (85 mg/kg), potassium, rainfall (180mm), and evapotranspiration in real time.
+                    </p>
+
+                    <div style="background: rgba(255,255,255,0.06); border-radius: var(--radius-md); padding: 1rem; border: 1px solid rgba(255,255,255,0.1); margin-bottom: 1.25rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
+                            <span style="font-size: 0.85rem; color: #94a3b8;">Top Recommended Crop</span>
+                            <span style="font-weight: 700; color: #34d399;">Rice (Paddy)</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="font-size: 0.85rem; color: #94a3b8;">Suitability Score</span>
+                            <span style="font-weight: 700; color: #f59e0b;">94.5%</span>
+                        </div>
+                    </div>
+
+                    <a href="dashboard.html" class="btn btn-primary btn-sm" style="width: 100%;">
+                        <i class="fa-solid fa-gauge-high"></i> Launch Farmer Dashboard Demo
+                    </a>
+                </div>
+
+                <div class="hero-floating-badge badge-bottom-left">
+                    <i class="fa-solid fa-shield-virus text-success fa-lg"></i>
+                    <div>
+                        <strong style="font-size: 0.85rem; display: block;">Zero Chemical Residue</strong>
+                        <span style="font-size: 0.75rem; color: #64748b;">Bio-IPM Verified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="section-header">
+            <span class="section-tag">Intelligent Tools</span>
+            <h2 class="section-title">Everything You Need for Sustainable Farming</h2>
+            <p class="section-desc">
+                From precision soil diagnostics to deep-learning disease detection, AgroSustain empowers modern growers with state-of-the-art agricultural intelligence.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <!-- Feature 1 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrapper icon-green">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                </div>
+                <h3>AI Crop Recommendation</h3>
+                <p>
+                    Predict the most suitable and profitable crops tailored to your soil's N-P-K nutrient levels, soil pH, temperature, humidity, and seasonal rainfall.
+                </p>
+                <a href="crop-recommendation.html" class="feature-link">
+                    Explore Recommendation <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrapper icon-red">
+                    <i class="fa-solid fa-shield-virus"></i>
+                </div>
+                <h3>Plant Disease Detection</h3>
+                <p>
+                    Instantly diagnose plant pathologies by uploading leaf photos. Receive AI diagnosis, organic biological remedies, and chemical mitigation strategies.
+                </p>
+                <a href="disease-detection.html" class="feature-link">
+                    Scan Plant Health <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrapper icon-blue">
+                    <i class="fa-solid fa-cloud-sun-rain"></i>
+                </div>
+                <h3>Weather-Based Advisory</h3>
+                <p>
+                    Receive 5-day hyper-local agricultural weather forecasts with actionable advisories for precision spraying windows, frost warnings, and harvesting.
+                </p>
+                <a href="weather.html" class="feature-link">
+                    View Weather Radar <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrapper icon-blue">
+                    <i class="fa-solid fa-droplet"></i>
+                </div>
+                <h3>Smart Irrigation Guidance</h3>
+                <p>
+                    Calculate exact volumetric crop water needs using FAO-56 evapotranspiration models to cut groundwater waste by over 40% with precision scheduling.
+                </p>
+                <a href="irrigation.html" class="feature-link">
+                    Calculate Water Needs <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrapper icon-gold">
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <h3>Crop Yield Prediction</h3>
+                <p>
+                    Forecast harvest tonnage and farmgate market revenue based on soil type, acreage, irrigation efficiency, and balanced fertilizer dosage.
+                </p>
+                <a href="yield-prediction.html" class="feature-link">
+                    Forecast Harvest <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Feature 6 -->
+            <div class="feature-card">
+                <div class="feature-icon-wrapper icon-purple">
+                    <i class="fa-solid fa-earth-americas"></i>
+                </div>
+                <h3>SDG Sustainability Tracking</h3>
+                <p>
+                    Quantify your farm's contributions toward UN Sustainable Development Goals (SDGs 2, 6, 12, 13, 15) with carbon offsets and eco-badges.
+                </p>
+                <a href="sdg.html" class="feature-link">
+                    Track SDG Impact <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SDG Section -->
+    <section class="section sdg-section" id="sdgs">
+        <div class="section-header">
+            <span class="section-tag" style="color: #34d399;">Global Alignment</span>
+            <h2 class="section-title">Supporting UN Sustainable Development Goals</h2>
+            <p class="section-desc">
+                AgroSustain directly advances 5 key United Nations SDGs to build climate-resilient, food-secure, and ecologically harmonious agricultural communities.
+            </p>
+        </div>
+
+        <div class="sdg-grid">
+            <!-- SDG 2 -->
+            <div class="sdg-card" style="--card-color: var(--sdg-2);">
+                <div class="sdg-header">
+                    <div class="sdg-badge-num">2</div>
+                    <i class="fa-solid fa-bowl-food fa-xl" style="color: var(--sdg-2);"></i>
+                </div>
+                <h4>SDG 2: Zero Hunger</h4>
+                <p>Maximizes crop yields, reduces harvest losses, and enhances staple food security through precision AI nutrient advice.</p>
+            </div>
+
+            <!-- SDG 6 -->
+            <div class="sdg-card" style="--card-color: var(--sdg-6);">
+                <div class="sdg-header">
+                    <div class="sdg-badge-num">6</div>
+                    <i class="fa-solid fa-hand-holding-droplet fa-xl" style="color: var(--sdg-6);"></i>
+                </div>
+                <h4>SDG 6: Clean Water</h4>
+                <p>Prevents aquifer over-extraction and protects freshwater watersheds by optimizing precision drip and sprinkler runtimes.</p>
+            </div>
+
+            <!-- SDG 12 -->
+            <div class="sdg-card" style="--card-color: var(--sdg-12);">
+                <div class="sdg-header">
+                    <div class="sdg-badge-num">12</div>
+                    <i class="fa-solid fa-recycle fa-xl" style="color: var(--sdg-12);"></i>
+                </div>
+                <h4>SDG 12: Responsible Consumption</h4>
+                <p>Reduces chemical fertilizer and pesticide overuse through targeted bio-organic inputs and crop residue recycling.</p>
+            </div>
+
+            <!-- SDG 13 -->
+            <div class="sdg-card" style="--card-color: var(--sdg-13);">
+                <div class="sdg-header">
+                    <div class="sdg-badge-num">13</div>
+                    <i class="fa-solid fa-cloud-sun fa-xl" style="color: var(--sdg-13);"></i>
+                </div>
+                <h4>SDG 13: Climate Action</h4>
+                <p>Builds climate resilience against droughts and shifting precipitation while lowering agriculture's carbon footprint.</p>
+            </div>
+
+            <!-- SDG 15 -->
+            <div class="sdg-card" style="--card-color: var(--sdg-15);">
+                <div class="sdg-header">
+                    <div class="sdg-badge-num">15</div>
+                    <i class="fa-solid fa-tree fa-xl" style="color: var(--sdg-15);"></i>
+                </div>
+                <h4>SDG 15: Life on Land</h4>
+                <p>Protects soil microbial health, halts land degradation, and promotes biodiversity with cover crops and IPM.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section" id="how-it-works">
+        <div class="section-header">
+            <span class="section-tag">Step by Step</span>
+            <h2 class="section-title">How AgroSustain Works</h2>
+            <p class="section-desc">
+                A seamless four-step pipeline connecting farmer observations to actionable, sustainable field decisions.
+            </p>
+        </div>
+
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h4>Input Field Data</h4>
+                <p>Enter soil NPK, soil pH, moisture levels, or upload a plant leaf photo.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h4>AI / ML Processing</h4>
+                <p>Spring Boot backend routes queries to Python AI models & agronomic heuristics.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h4>Actionable Advice</h4>
+                <p>Get tailored crop recommendations, irrigation schedules, and disease remedies.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h4>Track SDG Impact</h4>
+                <p>Monitor water saved, carbon offset, and harvest efficiency in your dashboard.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="about">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                    <span>Agro<span>Sustain</span></span>
+                </a>
+                <p>
+                    AI-Powered SDG Smart Agriculture Platform dedicated to empowering farmers with sustainable, data-driven farming intelligence.
+                </p>
+                <div style="display: flex; gap: 0.75rem;">
+                    <span style="background: rgba(16,185,129,0.15); color:#34d399; padding: 0.3rem 0.7rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700;">Java Spring Boot</span>
+                    <span style="background: rgba(14,165,233,0.15); color:#38bdf8; padding: 0.3rem 0.7rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700;">Python AI / Flask</span>
+                    <span style="background: rgba(245,158,11,0.15); color:#fbbf24; padding: 0.3rem 0.7rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700;">MySQL</span>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h5>Platform Tools</h5>
+                <ul>
+                    <li><a href="crop-recommendation.html">Crop Recommendation</a></li>
+                    <li><a href="disease-detection.html">Plant Disease Detection</a></li>
+                    <li><a href="weather.html">Weather Advisory</a></li>
+                    <li><a href="irrigation.html">Smart Irrigation</a></li>
+                    <li><a href="yield-prediction.html">Yield Prediction</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h5>Sustainability</h5>
+                <ul>
+                    <li><a href="sdg.html">SDG 2 – Zero Hunger</a></li>
+                    <li><a href="sdg.html">SDG 6 – Clean Water</a></li>
+                    <li><a href="sdg.html">SDG 12 – Responsible Production</a></li>
+                    <li><a href="sdg.html">SDG 13 – Climate Action</a></li>
+                    <li><a href="sdg.html">SDG 15 – Life on Land</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h5>Farmer Account</h5>
+                <ul>
+                    <li><a href="login.html">Sign In</a></li>
+                    <li><a href="register.html">Farmer Registration</a></li>
+                    <li><a href="dashboard.html">Live Dashboard</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 AgroSustain – AI-Powered SDG Smart Agriculture Platform. All rights reserved.</p>
+            <p>Full Stack Java Spring Boot + Python AI/ML + MySQL Project</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Irrigation Guidance – AgroSustain</title>
+    <!-- FontAwesome & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="brand-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                    <span>Agro<span>Sustain</span></span>
+                </a>
+            </div>
+
+            <div class="sidebar-user-preview">
+                <div class="user-avatar">GV</div>
+                <div class="user-info">
+                    <h5 class="current-user-name">Green Valley Farmer</h5>
+                    <p>Midwest Ag Zone</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">Main Platform</div>
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <i class="fa-solid fa-gauge-high"></i> <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="crop-recommendation.html" class="sidebar-link">
+                            <i class="fa-solid fa-seedling"></i> <span>Crop Recommendation</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="disease-detection.html" class="sidebar-link">
+                            <i class="fa-solid fa-shield-virus"></i> <span>Disease Detection</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="weather.html" class="sidebar-link">
+                            <i class="fa-solid fa-cloud-sun-rain"></i> <span>Weather Advisory</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="irrigation.html" class="sidebar-link active">
+                            <i class="fa-solid fa-droplet"></i> <span>Smart Irrigation</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="yield-prediction.html" class="sidebar-link">
+                            <i class="fa-solid fa-chart-line"></i> <span>Yield Prediction</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="sdg.html" class="sidebar-link">
+                            <i class="fa-solid fa-earth-americas"></i> <span>SDG Impact</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-outline btn-sm" style="width: 100%; color: #f87171; border-color: rgba(239,68,68,0.3);" onclick="Auth.logout()">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-topbar">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="page-breadcrumb">
+                        <h2>Smart Irrigation Guidance</h2>
+                        <p>Calculate crop evapotranspiration (ETc), soil moisture deficit, and automated pump schedules supporting SDG 6</p>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <span class="status-pill pulse"><i class="fa-solid fa-faucet-drip"></i> FAO-56 Water Balance Active</span>
+                </div>
+            </header>
+
+            <div class="dashboard-body">
+
+                <div class="panel-card">
+                    <div class="panel-header">
+                        <h3>Field & Irrigation Configuration</h3>
+                        <p>Input current soil sensor readings or estimates to generate an efficient watering schedule</p>
+                    </div>
+
+                    <form id="irrigationForm">
+                        <div class="form-grid-3" style="margin-bottom: 1.5rem;">
+                            <div class="form-group">
+                                <label class="form-label" for="irrigCropType">Crop Variety</label>
+                                <select class="form-control" id="irrigCropType">
+                                    <option value="Maize" selected>Maize / Corn</option>
+                                    <option value="Rice">Rice (Wetland Paddy)</option>
+                                    <option value="Wheat">Wheat</option>
+                                    <option value="Tomato">Tomato</option>
+                                    <option value="Potato">Potato</option>
+                                    <option value="Cotton">Cotton</option>
+                                    <option value="Chickpea">Chickpea / Pulses</option>
+                                    <option value="Banana">Banana</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="irrigSoilType">Soil Texture</label>
+                                <select class="form-control" id="irrigSoilType">
+                                    <option value="Loamy" selected>Loamy Soil</option>
+                                    <option value="Alluvial">Alluvial Basin</option>
+                                    <option value="Clay Loam">Clay Loam</option>
+                                    <option value="Black Cotton (Vertisol)">Black Cotton (Vertisol)</option>
+                                    <option value="Sandy Loam">Sandy Loam</option>
+                                    <option value="Sandy">Sandy Soil</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="irrigArea">Field Area (Acres)</label>
+                                <input type="number" step="0.5" class="form-control" id="irrigArea" value="5.0" min="0.5">
+                            </div>
+                        </div>
+
+                        <div class="form-grid-2" style="margin-bottom: 1.5rem;">
+                            <!-- Soil Moisture Slider -->
+                            <div class="slider-container">
+                                <div class="slider-header">
+                                    <label class="form-label" style="margin-bottom: 0;">Current Soil Moisture (%)</label>
+                                    <span class="slider-value-badge" id="val_irrigationMoisture">32%</span>
+                                </div>
+                                <input type="range" class="form-range" id="irrigationMoistureSlider" min="5" max="60" value="32">
+                                <small style="color: #64748b; font-size: 0.75rem;">Volumetric soil water content</small>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="irrigMethod">Irrigation System</label>
+                                <select class="form-control" id="irrigMethod">
+                                    <option value="Precision Drip" selected>Precision Drip Irrigation (92% Efficiency)</option>
+                                    <option value="Sub-surface Drip">Sub-surface Drip (95% Efficiency)</option>
+                                    <option value="Micro Sprinkler">Micro Sprinkler (82% Efficiency)</option>
+                                    <option value="Center Pivot">Center Pivot (78% Efficiency)</option>
+                                    <option value="Furrow Irrigation">Furrow Irrigation (60% Efficiency)</option>
+                                    <option value="Flood / Basin">Flood / Basin (50% Efficiency - High Waste)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="max-width: 320px; margin-bottom: 2rem;">
+                            <label class="form-label" for="irrigForecastRain">Forecast Rainfall Next 24h (mm)</label>
+                            <input type="number" step="1" class="form-control" id="irrigForecastRain" value="0" min="0">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg" id="btnCalculateIrrigation" style="width: 100%;">
+                            <i class="fa-solid fa-calculator"></i> Calculate Water Requirement & Schedule
+                        </button>
+                    </form>
+
+                    <!-- Irrigation Result Card -->
+                    <div id="irrigationResultCard" class="result-card" style="display: none;"></div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/irrigation.js"></script>
+</body>
+</html>

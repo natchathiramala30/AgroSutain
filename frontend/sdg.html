@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG Sustainability & Impact Tracking – AgroSustain</title>
+    <!-- FontAwesome & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="brand-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                    <span>Agro<span>Sustain</span></span>
+                </a>
+            </div>
+
+            <div class="sidebar-user-preview">
+                <div class="user-avatar">GV</div>
+                <div class="user-info">
+                    <h5 class="current-user-name">Green Valley Farmer</h5>
+                    <p>Midwest Ag Zone</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">Main Platform</div>
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <i class="fa-solid fa-gauge-high"></i> <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="crop-recommendation.html" class="sidebar-link">
+                            <i class="fa-solid fa-seedling"></i> <span>Crop Recommendation</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="disease-detection.html" class="sidebar-link">
+                            <i class="fa-solid fa-shield-virus"></i> <span>Disease Detection</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="weather.html" class="sidebar-link">
+                            <i class="fa-solid fa-cloud-sun-rain"></i> <span>Weather Advisory</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="irrigation.html" class="sidebar-link">
+                            <i class="fa-solid fa-droplet"></i> <span>Smart Irrigation</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="yield-prediction.html" class="sidebar-link">
+                            <i class="fa-solid fa-chart-line"></i> <span>Yield Prediction</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="sdg.html" class="sidebar-link active">
+                            <i class="fa-solid fa-earth-americas"></i> <span>SDG Impact</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-outline btn-sm" style="width: 100%; color: #f87171; border-color: rgba(239,68,68,0.3);" onclick="Auth.logout()">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-topbar">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="page-breadcrumb">
+                        <h2>SDG Sustainability Tracking</h2>
+                        <p>Evaluate your farm's alignment with UN Sustainable Development Goals (SDG 2, 6, 12, 13, 15)</p>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <button class="btn btn-primary btn-sm" onclick="window.print()">
+                        <i class="fa-solid fa-certificate"></i> Print SDG Impact Certificate
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-body">
+
+                <!-- Overall Sustainability Scorecard Banner -->
+                <div style="background: linear-gradient(135deg, #091f14 0%, #0d3822 100%); color: white; border-radius: var(--radius-lg); padding: 2.25rem; border: 1px solid var(--forest-border); box-shadow: var(--shadow-md); margin-bottom: 2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem;">
+                        <div>
+                            <span style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: #34d399; font-weight: 700;">Farm Eco-Certification</span>
+                            <h1 style="font-size: 2.4rem; color: white; margin-top: 4px;" id="sdgGrade">A+ Eco-Champion</h1>
+                            <p style="color: #cbd5e1; font-size: 0.95rem; margin-top: 4px;">Operating at the top 5% of regional sustainable agricultural efficiency</p>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 1.25rem; background: rgba(255,255,255,0.06); padding: 1rem 1.75rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);">
+                            <div class="score-circle" style="--score: 92;">
+                                <div class="score-circle-inner" id="sdgOverallScore">91.8%</div>
+                            </div>
+                            <div>
+                                <h4 style="color: white; font-size: 1.15rem;">Composite SDG Score</h4>
+                                <p style="color: #94a3b8; font-size: 0.8rem;">Evaluated Oct 2026</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Impact Key Indicators -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; padding-top: 1.75rem; margin-top: 1.75rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <div>
+                            <span style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Water Saved (SDG 6)</span>
+                            <h3 style="font-size: 1.6rem; color: #38bdf8; margin-top: 2px;" id="sdgWaterSaved">142,500 L</h3>
+                        </div>
+                        <div>
+                            <span style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Carbon Offset (SDG 13)</span>
+                            <h3 style="font-size: 1.6rem; color: #34d399; margin-top: 2px;" id="sdgCo2Offset">840 kg</h3>
+                        </div>
+                        <div>
+                            <span style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Chemical Reduction (SDG 12)</span>
+                            <h3 style="font-size: 1.6rem; color: #f59e0b; margin-top: 2px;" id="sdgChemReduced">28.5%</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5 SDG Pillars Progress Trackers -->
+                <div class="panel-card">
+                    <div class="panel-header">
+                        <h3>UN Sustainable Development Goals Performance</h3>
+                        <p>Detailed breakdown across all five supported sustainability pillars</p>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2rem;">
+                        <!-- SDG 2 -->
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
+                                <span style="font-weight: 700; color: var(--forest-dark); font-size: 0.95rem;">
+                                    <i class="fa-solid fa-bowl-food" style="color: var(--sdg-2); margin-right: 6px;"></i> SDG 2: Zero Hunger (Harvest Yield Efficiency)
+                                </span>
+                                <span style="font-weight: 700; color: var(--forest-dark);" id="bar_sdg2_val">92%</span>
+                            </div>
+                            <div style="height: 10px; background: #e2e8f0; border-radius: 9999px; overflow: hidden;">
+                                <div id="bar_sdg2" style="height: 100%; width: 92%; background: var(--sdg-2); border-radius: 9999px;"></div>
+                            </div>
+                        </div>
+
+                        <!-- SDG 6 -->
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
+                                <span style="font-weight: 700; color: var(--forest-dark); font-size: 0.95rem;">
+                                    <i class="fa-solid fa-hand-holding-droplet" style="color: var(--sdg-6); margin-right: 6px;"></i> SDG 6: Clean Water and Sanitation (Aquifer Conservation)
+                                </span>
+                                <span style="font-weight: 700; color: var(--forest-dark);" id="bar_sdg6_val">95%</span>
+                            </div>
+                            <div style="height: 10px; background: #e2e8f0; border-radius: 9999px; overflow: hidden;">
+                                <div id="bar_sdg6" style="height: 100%; width: 95%; background: var(--sdg-6); border-radius: 9999px;"></div>
+                            </div>
+                        </div>
+
+                        <!-- SDG 12 -->
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
+                                <span style="font-weight: 700; color: var(--forest-dark); font-size: 0.95rem;">
+                                    <i class="fa-solid fa-recycle" style="color: var(--sdg-12); margin-right: 6px;"></i> SDG 12: Responsible Consumption and Production (Input Reduction)
+                                </span>
+                                <span style="font-weight: 700; color: var(--forest-dark);" id="bar_sdg12_val">89%</span>
+                            </div>
+                            <div style="height: 10px; background: #e2e8f0; border-radius: 9999px; overflow: hidden;">
+                                <div id="bar_sdg12" style="height: 100%; width: 89%; background: var(--sdg-12); border-radius: 9999px;"></div>
+                            </div>
+                        </div>
+
+                        <!-- SDG 13 -->
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
+                                <span style="font-weight: 700; color: var(--forest-dark); font-size: 0.95rem;">
+                                    <i class="fa-solid fa-cloud-sun" style="color: var(--sdg-13); margin-right: 6px;"></i> SDG 13: Climate Action (Carbon Sequestration & Mitigation)
+                                </span>
+                                <span style="font-weight: 700; color: var(--forest-dark);" id="bar_sdg13_val">91%</span>
+                            </div>
+                            <div style="height: 10px; background: #e2e8f0; border-radius: 9999px; overflow: hidden;">
+                                <div id="bar_sdg13" style="height: 100%; width: 91%; background: var(--sdg-13); border-radius: 9999px;"></div>
+                            </div>
+                        </div>
+
+                        <!-- SDG 15 -->
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.4rem;">
+                                <span style="font-weight: 700; color: var(--forest-dark); font-size: 0.95rem;">
+                                    <i class="fa-solid fa-tree" style="color: var(--sdg-15); margin-right: 6px;"></i> SDG 15: Life on Land (Soil Microbial & Terrestrial Health)
+                                </span>
+                                <span style="font-weight: 700; color: var(--forest-dark);" id="bar_sdg15_val">94%</span>
+                            </div>
+                            <div style="height: 10px; background: #e2e8f0; border-radius: 9999px; overflow: hidden;">
+                                <div id="bar_sdg15" style="height: 100%; width: 94%; background: var(--sdg-15); border-radius: 9999px;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Unlocked Badges Grid -->
+                    <h4 style="font-size: 1.15rem; color: var(--forest-dark); margin-bottom: 1rem;">Earned Sustainability Badges</h4>
+                    <div class="form-grid-2" id="sdgBadgesGrid" style="margin-bottom: 2rem;"></div>
+
+                    <!-- Recommendations List -->
+                    <h4 style="font-size: 1.15rem; color: var(--forest-dark); margin-bottom: 1rem;">Next Milestone Recommendations</h4>
+                    <ul id="sdgActionList" style="list-style: none; padding-left: 0;"></ul>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/sdg.js"></script>
+</body>
+</html>

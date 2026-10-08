@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Registration – AgroSustain</title>
+    <!-- FontAwesome & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column; background: radial-gradient(circle at 90% 10%, rgba(16, 185, 129, 0.12), transparent 40%), radial-gradient(circle at 10% 90%, rgba(14, 165, 233, 0.08), transparent 40%), #f0f7f3;">
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="brand-logo">
+                <div class="logo-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                <span>Agro<span>Sustain</span></span>
+            </a>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-outline btn-sm">Sign In</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Registration Card -->
+    <main style="flex-grow: 1; display: flex; align-items: center; justify-content: center; padding: 2.5rem 1rem;">
+        <div style="background: white; border-radius: var(--radius-xl); border: 1px solid rgba(16, 185, 129, 0.2); box-shadow: var(--shadow-lg); width: 100%; max-width: 580px; padding: 2.5rem 2.2rem; position: relative;">
+            
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="width: 60px; height: 60px; background: rgba(16, 185, 129, 0.15); color: var(--primary-dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin: 0 auto 1rem;">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+                <h2 style="font-size: 1.8rem; color: var(--forest-dark);">Farmer Registration</h2>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">Create your account to access AI-driven sustainable agriculture tools</p>
+            </div>
+
+            <form id="registerForm">
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="regFullName">Full Name *</label>
+                        <input type="text" class="form-control" id="regFullName" placeholder="e.g. Johnathan Miller" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regEmail">Email Address *</label>
+                        <input type="email" class="form-control" id="regEmail" placeholder="farmer@example.com" required>
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="regPhone">Phone Number</label>
+                        <input type="tel" class="form-control" id="regPhone" placeholder="+1 (555) 019-2834">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regLocation">Farm Location *</label>
+                        <input type="text" class="form-control" id="regLocation" placeholder="e.g. Midwest Ag Zone, Sector 4" required>
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="regFarmSize">Farm Size (Acres)</label>
+                        <input type="number" step="0.5" class="form-control" id="regFarmSize" value="10.0" min="0.5">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regSoilType">Primary Soil Type</label>
+                        <select class="form-control" id="regSoilType">
+                            <option value="Loamy" selected>Loamy (Balanced fertility)</option>
+                            <option value="Alluvial">Alluvial (River basin fertile)</option>
+                            <option value="Clay Loam">Clay Loam (High moisture retention)</option>
+                            <option value="Black Cotton (Vertisol)">Black Cotton / Vertisol</option>
+                            <option value="Sandy Loam">Sandy Loam (Rapid drainage)</option>
+                            <option value="Red Soil">Red Soil (Iron-rich)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-grid-2">
+                    <div class="form-group">
+                        <label class="form-label" for="regPassword">Password *</label>
+                        <input type="password" class="form-control" id="regPassword" placeholder="Min 6 characters" required minlength="6">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="regConfirmPassword">Confirm Password *</label>
+                        <input type="password" class="form-control" id="regConfirmPassword" placeholder="Re-enter password" required>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 1.5rem; font-size: 0.85rem; color: #64748b;">
+                    <label style="display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer;">
+                        <input type="checkbox" required checked style="accent-color: var(--primary); margin-top: 3px;">
+                        <span>I agree to adopt sustainable agricultural practices and adhere to UN SDG environmental guidelines.</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.85rem; font-size: 1rem;" id="btnRegisterSubmit">
+                    <i class="fa-solid fa-user-plus"></i> Complete Farmer Registration
+                </button>
+            </form>
+
+            <div style="text-align: center; margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid #eef2f6; font-size: 0.9rem; color: var(--text-muted);">
+                Already have an account? 
+                <a href="login.html" style="color: var(--primary-dark); font-weight: 700; text-decoration: none;">Sign in here</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

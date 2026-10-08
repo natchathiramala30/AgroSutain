@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard – AgroSustain AI Platform</title>
+    <!-- Chart.js & FontAwesome -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="dashboardSidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="brand-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                    <span>Agro<span>Sustain</span></span>
+                </a>
+            </div>
+
+            <div class="sidebar-user-preview">
+                <div class="user-avatar" id="sidebarAvatar">GV</div>
+                <div class="user-info">
+                    <h5 id="dashFarmerName">Green Valley Farmer</h5>
+                    <p id="dashFarmLocation">Midwest Ag Zone</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">Main Platform</div>
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link active" id="sideNavDashboard">
+                            <i class="fa-solid fa-gauge-high"></i> <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="crop-recommendation.html" class="sidebar-link" id="sideNavCrop">
+                            <i class="fa-solid fa-seedling"></i> <span>Crop Recommendation</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="disease-detection.html" class="sidebar-link" id="sideNavDisease">
+                            <i class="fa-solid fa-shield-virus"></i> <span>Disease Detection</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="weather.html" class="sidebar-link" id="sideNavWeather">
+                            <i class="fa-solid fa-cloud-sun-rain"></i> <span>Weather Advisory</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="irrigation.html" class="sidebar-link" id="sideNavIrrigation">
+                            <i class="fa-solid fa-droplet"></i> <span>Smart Irrigation</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="yield-prediction.html" class="sidebar-link" id="sideNavYield">
+                            <i class="fa-solid fa-chart-line"></i> <span>Yield Prediction</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="sdg.html" class="sidebar-link" id="sideNavSdg">
+                            <i class="fa-solid fa-earth-americas"></i> <span>SDG Impact</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-outline btn-sm" style="width: 100%; color: #f87171; border-color: rgba(239,68,68,0.3);" onclick="Auth.logout()" id="sidebarLogoutBtn">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+            <!-- Topbar -->
+            <header class="dashboard-topbar">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button class="mobile-toggle" id="dashSidebarToggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="page-breadcrumb">
+                        <h2>Farmer Dashboard</h2>
+                        <p>Real-time agronomic telemetry, AI advisory, and SDG sustainability tracking</p>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <div class="status-pill pulse">
+                        <i class="fa-solid fa-microchip"></i> AI Engine Connected
+                    </div>
+                    <a href="crop-recommendation.html" class="btn btn-primary btn-sm">
+                        <i class="fa-solid fa-plus"></i> New Analysis
+                    </a>
+                </div>
+            </header>
+
+            <!-- Dashboard Body -->
+            <div class="dashboard-body">
+
+                <!-- Alert Banner -->
+                <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(14, 165, 233, 0.08) 100%); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: var(--radius-md); padding: 1rem 1.5rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 0.9rem;">
+                        <div style="width: 38px; height: 38px; border-radius: 50%; background: #10b981; color: white; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;">
+                            <i class="fa-solid fa-bell"></i>
+                        </div>
+                        <div>
+                            <strong style="color: var(--forest-dark); font-size: 0.95rem;">Agro-Climatic Advisory Active:</strong>
+                            <p style="color: var(--text-muted); font-size: 0.85rem;" id="dashActiveAlertText">
+                                Optimal 48-hour spraying window. Low fungal humidity pressure. Precision drip saved 142,500 L this season.
+                            </p>
+                        </div>
+                    </div>
+                    <span style="font-size: 0.8rem; font-weight: 700; color: #059669; background: white; padding: 0.35rem 0.85rem; border-radius: 9999px; border: 1px solid rgba(16,185,129,0.3);">
+                        <i class="fa-solid fa-check"></i> Verified Good Window
+                    </span>
+                </div>
+
+                <!-- 5 KPI Cards Grid -->
+                <div class="kpi-grid">
+                    <!-- Card 1: Recommended Crop -->
+                    <div class="kpi-card">
+                        <div class="kpi-info">
+                            <p>Recommended Crop</p>
+                            <h3 id="kpiCrop">Rice (Paddy)</h3>
+                            <div class="kpi-sub"><i class="fa-solid fa-circle-check"></i> 94.5% Suitability Match</div>
+                        </div>
+                        <div class="kpi-icon icon-green">
+                            <i class="fa-solid fa-wheat-awn"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Current Weather -->
+                    <div class="kpi-card">
+                        <div class="kpi-info">
+                            <p>Current Weather</p>
+                            <h3 id="kpiWeather">24.8°C</h3>
+                            <div class="kpi-sub" style="color: #0284c7;"><i class="fa-solid fa-cloud-sun"></i> Partly Cloudy (68% Hum)</div>
+                        </div>
+                        <div class="kpi-icon icon-blue">
+                            <i class="fa-solid fa-temperature-half"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Irrigation Status -->
+                    <div class="kpi-card">
+                        <div class="kpi-info">
+                            <p>Irrigation Status</p>
+                            <h3 id="kpiIrrigation">Optimal</h3>
+                            <div class="kpi-sub" style="color: #059669;"><i class="fa-solid fa-droplet"></i> Soil Moisture: 34%</div>
+                        </div>
+                        <div class="kpi-icon icon-blue">
+                            <i class="fa-solid fa-faucet-drip"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Disease Status -->
+                    <div class="kpi-card">
+                        <div class="kpi-info">
+                            <p>Pathology Status</p>
+                            <h3 id="kpiDisease" style="font-size: 1.25rem;">Healthy</h3>
+                            <div class="kpi-sub" style="color: #10b981;"><i class="fa-solid fa-shield-check"></i> Low Pathogen Pressure</div>
+                        </div>
+                        <div class="kpi-icon icon-green">
+                            <i class="fa-solid fa-shield-virus"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Expected Yield -->
+                    <div class="kpi-card">
+                        <div class="kpi-info">
+                            <p>Expected Harvest</p>
+                            <h3 id="kpiYield">42.5 Tons</h3>
+                            <div class="kpi-sub" style="color: #d97706;"><i class="fa-solid fa-arrow-trend-up"></i> +16.2% vs baseline</div>
+                        </div>
+                        <div class="kpi-icon icon-gold">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: SDG Score -->
+                    <div class="kpi-card">
+                        <div class="kpi-info">
+                            <p>Sustainability Score</p>
+                            <h3 id="kpiSdg">91.8 / 100</h3>
+                            <div class="kpi-sub" style="color: #7c3aed;"><i class="fa-solid fa-medal"></i> Grade A+ Champion</div>
+                        </div>
+                        <div class="kpi-icon icon-purple">
+                            <i class="fa-solid fa-earth-americas"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 Visual Charts Grid -->
+                <div class="charts-grid-2x2">
+                    <!-- Chart 1: Water Usage -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h4>Water Usage & Conservation (SDG 6)</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">Smart Drip vs Conventional Flood (Liters per Day)</p>
+                            </div>
+                            <span class="status-pill" style="background: rgba(14,165,233,0.12); color: #0284c7;">-42% Water Saved</span>
+                        </div>
+                        <div class="chart-container-box">
+                            <canvas id="waterUsageChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Chart 2: Crop Yield Comparison -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h4>Crop Yield Productivity (SDG 2)</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">AI Predicted Harvest vs Regional Benchmark (Tons/Acre)</p>
+                            </div>
+                            <span class="status-pill" style="background: rgba(16,185,129,0.12); color: #059669;">+16.2% Gain</span>
+                        </div>
+                        <div class="chart-container-box">
+                            <canvas id="cropYieldChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Chart 3: Resource Distribution -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h4>Resource Allocation & Efficiency (SDG 12)</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">Nutrient, Water & Bio-Pesticide Distribution</p>
+                            </div>
+                            <span class="status-pill" style="background: rgba(245,158,11,0.12); color: #d97706;">Bio-Optimized</span>
+                        </div>
+                        <div class="chart-container-box">
+                            <canvas id="resourceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Chart 4: SDG 5-Pillar Radar -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h4>5-Pillar SDG Sustainability Score</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">Performance across UN Goals (SDG 2, 6, 12, 13, 15)</p>
+                            </div>
+                            <span class="status-pill" style="background: rgba(139,92,246,0.12); color: #7c3aed;">91.8% Index</span>
+                        </div>
+                        <div class="chart-container-box">
+                            <canvas id="sdgRadarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activities & Quick Navigation -->
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+                    <!-- Activity Log -->
+                    <div class="panel-card" style="margin-bottom: 0;">
+                        <div class="panel-header" style="margin-bottom: 1rem;">
+                            <h3>Recent Agricultural Activities</h3>
+                            <p>Automated telemetry logs and AI model executions</p>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 0.85rem; background: #f8fafc; border-radius: var(--radius-sm); border: 1px solid #e2e8f0;">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(16,185,129,0.15); color: #059669; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fa-solid fa-wheat-awn"></i>
+                                </div>
+                                <div style="flex-grow: 1;">
+                                    <strong style="font-size: 0.9rem; color: var(--forest-dark);">AI Crop Recommendation Generated</strong>
+                                    <p style="font-size: 0.8rem; color: var(--text-muted);">Optimal match found: Rice Paddy (94.5% suitability)</p>
+                                </div>
+                                <span style="font-size: 0.75rem; color: #94a3b8;">15m ago</span>
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 0.85rem; background: #f8fafc; border-radius: var(--radius-sm); border: 1px solid #e2e8f0;">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(14,165,233,0.15); color: #0284c7; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fa-solid fa-droplet"></i>
+                                </div>
+                                <div style="flex-grow: 1;">
+                                    <strong style="font-size: 0.9rem; color: var(--forest-dark);">Precision Drip Schedule Executed</strong>
+                                    <p style="font-size: 0.8rem; color: var(--text-muted);">Applied 18,500 L on Sector A (Saved 8,400 L vs flooding)</p>
+                                </div>
+                                <span style="font-size: 0.75rem; color: #94a3b8;">2h ago</span>
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: 1rem; padding: 0.85rem; background: #f8fafc; border-radius: var(--radius-sm); border: 1px solid #e2e8f0;">
+                                <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(245,158,11,0.15); color: #d97706; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fa-solid fa-shield-virus"></i>
+                                </div>
+                                <div style="flex-grow: 1;">
+                                    <strong style="font-size: 0.9rem; color: var(--forest-dark);">Leaf Pathology Scan Verified</strong>
+                                    <p style="font-size: 0.8rem; color: var(--text-muted);">Tomato Early Blight detected (Trichoderma bio-remedy applied)</p>
+                                </div>
+                                <span style="font-size: 0.75rem; color: #94a3b8;">Yesterday</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Tools Panel -->
+                    <div class="panel-card" style="margin-bottom: 0;">
+                        <div class="panel-header" style="margin-bottom: 1rem;">
+                            <h3>Quick Actions</h3>
+                            <p>Fast access to AI agronomy tools</p>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <a href="crop-recommendation.html" class="btn btn-outline" style="justify-content: flex-start; padding: 0.75rem 1rem;">
+                                <i class="fa-solid fa-seedling text-success"></i> Crop Recommendation
+                            </a>
+                            <a href="disease-detection.html" class="btn btn-outline" style="justify-content: flex-start; padding: 0.75rem 1rem;">
+                                <i class="fa-solid fa-camera text-danger"></i> Leaf Disease Scanner
+                            </a>
+                            <a href="weather.html" class="btn btn-outline" style="justify-content: flex-start; padding: 0.75rem 1rem;">
+                                <i class="fa-solid fa-cloud-sun text-info"></i> Weather Forecast
+                            </a>
+                            <a href="irrigation.html" class="btn btn-outline" style="justify-content: flex-start; padding: 0.75rem 1rem;">
+                                <i class="fa-solid fa-faucet-drip text-primary"></i> Irrigation Calculator
+                            </a>
+                            <a href="sdg.html" class="btn btn-primary" style="justify-content: center; padding: 0.75rem 1rem; margin-top: 0.5rem;">
+                                <i class="fa-solid fa-medal"></i> View SDG Sustainability Report
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

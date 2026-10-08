@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Weather Advisory – AgroSustain</title>
+    <!-- FontAwesome & Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="brand-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+                    <span>Agro<span>Sustain</span></span>
+                </a>
+            </div>
+
+            <div class="sidebar-user-preview">
+                <div class="user-avatar">GV</div>
+                <div class="user-info">
+                    <h5 class="current-user-name">Green Valley Farmer</h5>
+                    <p>Midwest Ag Zone</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section-label">Main Platform</div>
+                <ul class="sidebar-menu">
+                    <li class="sidebar-item">
+                        <a href="dashboard.html" class="sidebar-link">
+                            <i class="fa-solid fa-gauge-high"></i> <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="crop-recommendation.html" class="sidebar-link">
+                            <i class="fa-solid fa-seedling"></i> <span>Crop Recommendation</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="disease-detection.html" class="sidebar-link">
+                            <i class="fa-solid fa-shield-virus"></i> <span>Disease Detection</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="weather.html" class="sidebar-link active">
+                            <i class="fa-solid fa-cloud-sun-rain"></i> <span>Weather Advisory</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="irrigation.html" class="sidebar-link">
+                            <i class="fa-solid fa-droplet"></i> <span>Smart Irrigation</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="yield-prediction.html" class="sidebar-link">
+                            <i class="fa-solid fa-chart-line"></i> <span>Yield Prediction</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="sdg.html" class="sidebar-link">
+                            <i class="fa-solid fa-earth-americas"></i> <span>SDG Impact</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn btn-outline btn-sm" style="width: 100%; color: #f87171; border-color: rgba(239,68,68,0.3);" onclick="Auth.logout()">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign Out
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-topbar">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <button class="mobile-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="page-breadcrumb">
+                        <h2>Weather-Based Agricultural Advisory</h2>
+                        <p>5-day agro-meteorological forecasting, spraying suitability windows, and frost/heatwave alerts</p>
+                    </div>
+                </div>
+
+                <div class="topbar-right">
+                    <span class="status-pill pulse"><i class="fa-solid fa-satellite"></i> Agro-Radar Online</span>
+                </div>
+            </header>
+
+            <div class="dashboard-body">
+
+                <!-- Location Search Bar -->
+                <div style="background: white; border-radius: var(--radius-md); padding: 1rem 1.5rem; margin-bottom: 2rem; border: 1px solid rgba(16, 185, 129, 0.15); display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                    <div style="flex-grow: 1; position: relative;">
+                        <i class="fa-solid fa-location-dot" style="position: absolute; left: 14px; top: 14px; color: var(--primary);"></i>
+                        <input type="text" class="form-control" id="weatherLocationInput" placeholder="Enter farm location or district..." style="padding-left: 2.5rem;">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="btnSearchWeather">
+                        <i class="fa-solid fa-magnifying-glass"></i> Refresh Advisory
+                    </button>
+                </div>
+
+                <!-- Current Weather Banner Card -->
+                <div style="background: linear-gradient(135deg, #091f14 0%, #0d3822 100%); color: white; border-radius: var(--radius-lg); padding: 2.25rem; border: 1px solid var(--forest-border); box-shadow: var(--shadow-md); margin-bottom: 2rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem;">
+                        <div>
+                            <span style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; color: #34d399; font-weight: 700;">Live Farm Condition</span>
+                            <div style="display: flex; align-items: center; gap: 1.25rem; margin-top: 6px;">
+                                <i class="fa-solid fa-cloud-sun fa-3x" style="color: #f59e0b;"></i>
+                                <div>
+                                    <h1 style="font-size: 3rem; color: white; line-height: 1;" id="weatherCurrentTemp">24.8°C</h1>
+                                    <p style="color: #cbd5e1; font-size: 1.05rem; margin-top: 4px;" id="weatherCurrentCond">Partly Cloudy with Gentle Breeze</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Operational Safety Badges -->
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div style="background: rgba(255,255,255,0.06); border-radius: var(--radius-sm); padding: 0.6rem 1rem; border: 1px solid rgba(255,255,255,0.1); font-size: 0.88rem; font-weight: 600;" id="weatherSprayBadge">
+                                <i class="fa-solid fa-circle-check text-success"></i> Spraying Safe
+                            </div>
+                            <div style="background: rgba(255,255,255,0.06); border-radius: var(--radius-sm); padding: 0.6rem 1rem; border: 1px solid rgba(255,255,255,0.1); font-size: 0.88rem; font-weight: 600;" id="weatherHarvestBadge">
+                                <i class="fa-solid fa-circle-check text-success"></i> Harvesting Window Open
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Telemetry Metric Row -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.25rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <div>
+                            <span style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Humidity</span>
+                            <h4 style="font-size: 1.3rem; color: white; margin-top: 2px;" id="weatherHumidity">68%</h4>
+                        </div>
+                        <div>
+                            <span style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Wind Speed</span>
+                            <h4 style="font-size: 1.3rem; color: white; margin-top: 2px;" id="weatherWind">11.4 km/h</h4>
+                        </div>
+                        <div>
+                            <span style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Rain Probability</span>
+                            <h4 style="font-size: 1.3rem; color: #38bdf8; margin-top: 2px;" id="weatherRainProb">18%</h4>
+                        </div>
+                        <div>
+                            <span style="font-size: 0.75rem; color: #94a3b8; text-transform: uppercase;">Est. Soil Moisture</span>
+                            <h4 style="font-size: 1.3rem; color: #34d399; margin-top: 2px;" id="weatherSoilMoist">36.5%</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Agricultural Advisory Panel -->
+                <div class="panel-card">
+                    <div class="panel-header">
+                        <h3>Agronomic Action Advisory</h3>
+                        <p>Tailored farming recommendations calculated from current atmospheric variables</p>
+                    </div>
+
+                    <div style="background: rgba(16, 185, 129, 0.08); border-radius: var(--radius-md); padding: 1.5rem; border: 1px solid rgba(16, 185, 129, 0.25); margin-bottom: 2rem;">
+                        <h4 style="color: #059669; font-size: 1.1rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fa-solid fa-lightbulb"></i> Expert Field Guidance
+                        </h4>
+                        <p style="color: #0f281b; font-size: 0.95rem; line-height: 1.6;" id="weatherAdvisoryText">
+                            Optimal weather window for bio-fertilizer foliar application and field weeding. Low disease humidity risk for next 48 hours. Wind speeds are safe for spray drift control.
+                        </p>
+                    </div>
+
+                    <h4 style="font-size: 1.2rem; color: var(--forest-dark); margin-bottom: 1.25rem;">5-Day Agricultural Forecast</h4>
+                    <div class="form-grid-3" id="weatherForecastGrid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));"></div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/weather.js"></script>
+</body>
+</html>
